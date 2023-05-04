@@ -8,26 +8,27 @@ import java.util.Arrays;
 import java.util.Collection;
 
 public class CryptoUserDetail implements UserDetails {
-    private final User cryptoUser;
+    private final User user;
 
-    public CryptoUserDetail(User cryptoUser) {
-        this.cryptoUser = cryptoUser;
+    public CryptoUserDetail(User user) {
+        this.user = user;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(cryptoUser.getRole());
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(user.getRole());
+//        SimpleGrantedAuthority authority = new SimpleGrantedAuthority("ROLE_USER");
         return Arrays.asList(authority);
     }
 
     @Override
     public String getPassword() {
-        return cryptoUser.getPassword();
+        return user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return cryptoUser.getUsername();
+        return user.getUsername();
     }
 
     @Override
@@ -47,6 +48,6 @@ public class CryptoUserDetail implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return cryptoUser.isEnabled();
+        return true;
     }
 }
