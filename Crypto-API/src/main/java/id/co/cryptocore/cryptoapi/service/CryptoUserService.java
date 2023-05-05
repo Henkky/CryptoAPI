@@ -41,6 +41,7 @@ public class CryptoUserService implements UserDetailsService {
         String password = userData.get("password").getAsString();
         String encodedPassword = passwordEncoder.encode(password);
         user.setPassword(encodedPassword);
+        System.out.println(encodedPassword);
         user.setRole(userData.get("role").getAsString());
         user.setEnabled(true);
         System.out.println(userData.get("role").getAsString());
