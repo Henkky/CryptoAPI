@@ -16,6 +16,20 @@ public class WebClientHelper{
         return response;
     }
 
+    public static <T> String callPostApi(String url, T data){
+        WebClient.Builder builder = WebClient.builder();
+        String response = builder.build()
+                .post()
+                .uri(url)
+                .contentType(MediaType.APPLICATION_JSON)
+                .bodyValue(data)
+                .retrieve()
+                .bodyToMono(String.class)
+                .block();
+
+        return response;
+    }
+
     public static <T> String callPutApi(String url, T data){
         WebClient.Builder builder = WebClient.builder();
         String response = builder.build()

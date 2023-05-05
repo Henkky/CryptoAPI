@@ -26,7 +26,6 @@ public class CryptoUserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         String url = urlProps.getAccountSecurityUrl() + username;
         String data = WebClientHelper.callGetApi(url);
-        System.out.println(data);
 
         Gson gson = new Gson();
         JsonObject root = gson.fromJson(data, JsonObject.class);
@@ -41,9 +40,7 @@ public class CryptoUserService implements UserDetailsService {
         String password = userData.get("password").getAsString();
         String encodedPassword = passwordEncoder.encode(password);
         user.setPassword(encodedPassword);
-        System.out.println(encodedPassword);
         user.setRole(userData.get("role").getAsString());
-        System.out.println(userData.get("role").getAsString());
         return new CryptoUserDetail(user);
     }
 }
