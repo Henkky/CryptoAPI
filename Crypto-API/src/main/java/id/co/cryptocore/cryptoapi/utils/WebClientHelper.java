@@ -43,4 +43,16 @@ public class WebClientHelper{
 
         return response;
     }
+
+    public static String callDeleteApi(String url){
+        WebClient.Builder builder = WebClient.builder();
+        String response = builder.build()
+                .delete()
+                .uri(url)
+                .retrieve()
+                .bodyToMono(String.class)
+                .block();
+
+        return response;
+    }
 }

@@ -13,7 +13,7 @@ public class CryptoController {
     @Autowired
     GatewayService gatewayService;
 
-    @GetMapping("/{userid}")
+    @GetMapping("/inquiry/{userid}")
     public JsonObject findAccountByUserId(@PathVariable("userid") String userId){
         return gatewayService.callGetAccountById(userId);
     }
