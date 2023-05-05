@@ -43,7 +43,6 @@ public class CryptoUserService implements UserDetailsService {
         user.setPassword(encodedPassword);
         System.out.println(encodedPassword);
         user.setRole(userData.get("role").getAsString());
-        user.setEnabled(true);
         System.out.println(userData.get("role").getAsString());
         return new CryptoUserDetail(user);
     }

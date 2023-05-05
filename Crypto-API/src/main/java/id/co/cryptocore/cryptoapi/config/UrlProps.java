@@ -10,4 +10,7 @@ import org.springframework.context.annotation.Configuration;
 public class UrlProps {
     @Value("${internal.core.account.security.url}")
     String accountSecurityUrl;
+
+    @Value("${internal.core.balance.deduct.url}")
+    String balanceDeductUrl;
 }
