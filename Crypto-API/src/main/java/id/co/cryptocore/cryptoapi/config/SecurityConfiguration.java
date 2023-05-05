@@ -23,8 +23,6 @@ public class SecurityConfiguration {
                 .csrf().disable()
                 .httpBasic(Customizer.withDefaults())
                 .authorizeHttpRequests()
-                .requestMatchers(HttpMethod.GET, "/crypto/getaccounts").permitAll()
-                .requestMatchers(HttpMethod.GET, "/crypto/hello").hasAnyAuthority("admin")
                 .requestMatchers(HttpMethod.PUT, "/crypto/**").hasAuthority("user")
                 .anyRequest().authenticated()
                 .and()
